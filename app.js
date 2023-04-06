@@ -1,7 +1,12 @@
+// Cargar variables de entorno
+require('dotenv').config();
 const express = require('express');
 const hbs = require('hbs');
 
+
+
 const app = express();
+const port = process.env.PORT;
 // TODO: require('hbs');
 
 // Handlebars
@@ -40,4 +45,7 @@ app.get('/generic', function( req, res) {
 app.get('*', function(req, res) {
     res.sendFile(__dirname + '/public/404.html');
 });
-app.listen(8080);
+
+app.listen( port, () => {
+    console.log(`App runing at http://localhost:${ port }`);
+});
